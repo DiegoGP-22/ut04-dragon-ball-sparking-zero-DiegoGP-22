@@ -1,3 +1,5 @@
+// Saiyan.js
+
 const Luchador = require('./Luchador');
 
 class Saiyan extends Luchador {
@@ -6,23 +8,25 @@ class Saiyan extends Luchador {
     this.esSuperSaiyan = false;
   }
 
-  transformar() {
+  transformar() { // Puede transformarse varias veces por combate
     if (!this.esSuperSaiyan) {
-      this.ataque *= 1.5;
-      this.velocidad *= 1.3;
-      this.defensa *= 1.2;
+      console.log(`\t${this.nombre} se transformo en Super Saiyan!`);
+      this.ataque *= 1.3;
+      this.velocidad *= 1.5;
+      this.defensa *= 1.1;
       this.esSuperSaiyan = true;
     }
   }
 
-  revertirTransformacion() {
+  revertirTransformacion() { // Puede perder su transformacion en cualquier momento
     if (this.esSuperSaiyan) {
-      this.ataque /= 1.5;
-      this.velocidad /= 1.3;
-      this.defensa /= 1.2;
+      console.log(`\t${this.nombre} ha perdido su transformación.`);
+      this.ataque /= 1.3;
+      this.velocidad /= 1.5;
+      this.defensa /= 1.1;
       this.esSuperSaiyan = false;
     }
   }
 }
 
-module.exports = Saiyan;
+module.exports = Saiyan;  

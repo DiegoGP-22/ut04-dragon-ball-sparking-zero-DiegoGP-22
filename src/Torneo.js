@@ -1,9 +1,9 @@
+const { esPotenciaDeDos } = require('./utils'); 
 const simularBatalla = require('./simularBatalla');
-const { esPotenciaDeDos } = require('./utils');
 
 class Torneo {
   constructor(luchadores) {
-    if (!esPotenciaDeDos(luchadores.length)) {
+    if (!esPotenciaDeDos(luchadores.length)) { 
       throw new Error('El número de luchadores debe ser una potencia de 2.');
     }
     this.luchadores = luchadores;
@@ -11,16 +11,18 @@ class Torneo {
 
   iniciar() {
     let ronda = this.luchadores;
+    let contadorRonda = 1; 
     while (ronda.length > 1) {
+      console.log(`\n\t· Ronda ${contadorRonda} `);
       ronda = this.simularRonda(ronda);
+      contadorRonda++;
     }
-    console.log(`El campeón del torneo es ${ronda[0].nombre}!`);
     return ronda[0];
   }
 
   simularRonda(luchadores) {
-    console.log(`--- Ronda ${Math.log2(luchadores.length)} ---`);
     const ganadores = [];
+    // Combates de 2 en 2
     for (let i = 0; i < luchadores.length; i += 2) {
       const ganador = simularBatalla(luchadores[i], luchadores[i + 1]);
       ganadores.push(ganador);

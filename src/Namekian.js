@@ -6,10 +6,13 @@ class Namekian extends Luchador {
     this.regenerado = false;
   }
 
-  regenerarSalud() {
-    if (!this.regenerado && this.salud < 50) {
+  regenerarSalud() { //Regenera 1 vez 30 de vida cuando tiene menos del 50 %
+    if (this.salud <50 && !this.regenerado){
+      if (!this.regenerado) {
+      console.log(`\t${this.nombre} regenera salud!`);
       this.salud += 30;
       this.regenerado = true;
+      }
     }
   }
 }
